@@ -2,6 +2,8 @@ const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
 const connectDB = require('./config/database');
+const env = require('dotenv').config();
+
 
 const app = express();
 const server = http.createServer(app);
@@ -93,7 +95,7 @@ connectDB().then(() => {
         res.status(500).json({ error: 'Something went wrong!' });
     });
 
-    const PORT = process.env.PORT || 3000;
+    const PORT = process.env.PORT;
     server.listen(PORT, () => {
         console.log('\n=== Server Started ===');
         console.log(`Time: ${new Date().toISOString()}`);

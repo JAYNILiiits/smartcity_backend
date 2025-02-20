@@ -2,12 +2,12 @@ const express = require("express");
 const mongoose = require("./config/db");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+require("dotenv").config();
 const loraRoutes = require("./routes/loraRoutes");
 const ultrasonicRoutes = require("./routes/ultrasonicRoutes");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 // Enable CORS to allow cross-device access
 app.use(cors());
@@ -30,5 +30,5 @@ app.use("/ultrasonic", ultrasonicRoutes);
 
 // Start the server on 0.0.0.0 (for local network access)
 app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://10.0.49.90:${PORT}`);
+    console.log(`Server running on http://10.2.0.182:${PORT}`);
 });
